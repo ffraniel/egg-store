@@ -1,0 +1,12 @@
+.user-nav-link {
+  border: none; 
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.user-nav-link:hover {
+  background-color: blue;
+}

@@ -1,3 +1,6 @@
+## A Store to buy Eggs using React ##
+By Francis Whitehead
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
