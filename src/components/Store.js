@@ -1,6 +1,7 @@
 import React from 'react';
 import './Store.css';
 import StoreNav from './StoreNav';
+import StoreOptions from './StoreOptions';
 
 const Store = (props)=>{
   return(
@@ -11,7 +12,8 @@ const Store = (props)=>{
         <p>If you wish you can pay online</p>
         <div className="Store-border"></div>
         <h2>{props.location}</h2>
-        <StoreNav handleStoreNav={props.handleStoreNav} />
+        <StoreNav handleStoreNav={props.handleStoreNav} storeLocation={props.storeLocation} />
+        <StoreOptions storeLocation={props.storeLocation} />
       </div>
     </div>
   )
