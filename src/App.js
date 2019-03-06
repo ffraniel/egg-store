@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state={
       location: 'Home',
-      storeLocation: 'Eggs',
+      storeLocation: undefined,
       loading: false
     };
     this.handleNav = this.handleNav.bind(this);
@@ -43,7 +43,7 @@ class App extends Component {
           <UserNav handleNav={this.handleNav}/>
           <Logo handleNav={this.handleNav}/>
         </header>
-        <Store location={this.state.location} handleStoreNav={this.handleStoreNav} />
+        <Store location={this.state.location} handleStoreNav={this.handleStoreNav} storeLocation={this.state.storeLocation}/>
       </div>
     );
   }
