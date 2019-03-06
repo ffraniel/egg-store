@@ -3,6 +3,7 @@ import './App.css';
 import Store from './components/Store';
 import UserNav from './components/UserNav';
 import Logo from './components/Logo';
+import Cart from './components/Cart';
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +11,14 @@ class App extends Component {
     this.state={
       location: 'Home',
       storeLocation: undefined,
-      loading: false
+      loading: false,
+      cart: [{a:1}, {b:2}],
+      cartVisible: true
     };
     this.handleNav = this.handleNav.bind(this);
     this.handleStoreNav = this.handleStoreNav.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   handleNav (location) {
@@ -36,6 +41,25 @@ class App extends Component {
     }, 2000)
   }
 
+  addToCart(item, quantity) {
+    console.log("adding to cart")
+    let currentCart = this.state.cart;
+    for (let i = quantity; i > 0; i--) {
+      currentCart.push(item);
+    }
+    this.setState({
+      cart: currentCart,
+      cartVisible: true,
+    });
+  }
+
+  removeFromCart(item, quantity) {
+    let currentCart = this.state.cart;
+    for (let i = currentCart.length; i > 0; i--) {
+      console.log("this is in my cart: ", currentCart[i])
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -43,7 +67,14 @@ class App extends Component {
           <UserNav handleNav={this.handleNav}/>
           <Logo handleNav={this.handleNav}/>
         </header>
-        <Store location={this.state.location} handleStoreNav={this.handleStoreNav} storeLocation={this.state.storeLocation}/>
+        <Store 
+          location={this.state.location} 
+          handleStoreNav={this.handleStoreNav} 
+          storeLocation={this.state.storeLocation}
+          addToCart={this.addToCart}
+          removeFromCart={this.removeFromCart}
+        />
+        <Cart cart={this.state.cart} cartVisible={this.state.cartVisible} handleNav={this.handleNav} />
       </div>
     );
   }

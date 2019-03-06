@@ -1,0 +1,14 @@
+.Popup-Cart {
+  position: fixed;
+  bottom: -300px;
+  right: 0;
+  transition: bottom 2s;
+  background: rgb(170, 179, 174);
+  color: rgb(23, 24, 24);
+  padding: 0 10px;
+  border-radius: 3px;
+}
+
+.Cart-Visible {
+  bottom: 0;
+}
