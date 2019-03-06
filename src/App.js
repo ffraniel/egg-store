@@ -12,13 +12,20 @@ class App extends Component {
       location: 'Home',
       storeLocation: undefined,
       loading: false,
-      cart: [{a:1}, {b:2}],
-      cartVisible: true
+      cart: [],
+      cartVisible: false
     };
     this.handleNav = this.handleNav.bind(this);
     this.handleStoreNav = this.handleStoreNav.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.makeCartVisible = this.makeCartVisible.bind(this);
+  }
+
+  makeCartVisible () {
+    this.setState({
+      cartVisible: !this.state.cartVisible
+    })
   }
 
   handleNav (location) {
@@ -64,7 +71,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <UserNav handleNav={this.handleNav}/>
+          <UserNav handleNav={this.handleNav} makeCartVisible={this.makeCartVisible}/>
           <Logo handleNav={this.handleNav}/>
         </header>
         <Store 
@@ -74,7 +81,14 @@ class App extends Component {
           addToCart={this.addToCart}
           removeFromCart={this.removeFromCart}
         />
-        <Cart cart={this.state.cart} cartVisible={this.state.cartVisible} handleNav={this.handleNav} />
+        <Cart 
+          cart={this.state.cart} 
+          cartVisible={this.state.cartVisible} 
+          handleNav={this.handleNav}
+          makeCartVisible={this.makeCartVisible} 
+          addToCart={this.addToCart}
+          removeFromCart={this.removeFromCart}
+        />
       </div>
     );
   }

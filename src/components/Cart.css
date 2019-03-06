@@ -1,14 +1,28 @@
 .Popup-Cart {
   position: fixed;
-  bottom: -300px;
+  bottom: -400px;
   right: 0;
-  transition: bottom 2s;
+  transition: bottom 0.5s;
   background: rgb(170, 179, 174);
   color: rgb(23, 24, 24);
   padding: 0 10px;
   border-radius: 3px;
+  height: 400px;
+  width: 320px;
+  overflow: scroll;
+  font-size: 0.75rem;
 }
 
 .Cart-Visible {
   bottom: 0;
+}
+
+.Popup-Minimizer {
+  color: white;
+  float: right; 
+  font-size: 45px;
+}
+
+.Popup-Minimizer:hover {
+  color:rgb(216, 209, 209);
 }
