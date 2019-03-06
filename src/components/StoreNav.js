@@ -5,8 +5,10 @@ import './StoreNav.css';
 const StoreNav = (props)=>{
   return (
     <nav className="StoreNav">
-      <StoreNavButton handleStoreNav={props.handleStoreNav} destination={"Eggs"} />
-      <StoreNavButton handleStoreNav={props.handleStoreNav} destination={"Fish"} />
+      <p>Select by</p>
+      <StoreNavButton handleStoreNav={props.handleStoreNav} destination={"Number"} storeLocation={props.storeLocation} />
+      <StoreNavButton handleStoreNav={props.handleStoreNav} destination={"Rare Breed"} storeLocation={props.storeLocation} />
+      <StoreNavButton handleStoreNav={props.handleStoreNav} destination={"All"} storeLocation={props.storeLocation} />
     </nav>
   )
 };
