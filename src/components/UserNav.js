@@ -8,7 +8,7 @@ const UserNav = (props)=>{
       <UserNavButton handleNav={props.handleNav} destination={"Login"} />
       <UserNavButton handleNav={props.handleNav} destination={"Checkout"} />
       <UserNavButton handleNav={props.handleNav} destination={"Account"} />
-      <UserNavButton handleNav={props.handleNav} destination={"Basket"} />
+      <button className="user-nav-link" onClick={()=>{props.makeCartVisible()}}>Basket</button>
     </nav>
   )
 }
