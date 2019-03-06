@@ -20,7 +20,6 @@ class StoreOptions extends Component {
         options: eggOptions
       });
     }, 450)
-
   }
 
   render() {
@@ -34,7 +33,7 @@ class StoreOptions extends Component {
               <h5 className="Product-Option-Price">£{option.price}</h5>
               {/* <img src={} className="" alt="eggs" /> */}
               <p className="">{option.number} {option.includeRare ? 'Rare Breed': ''} Eggs</p>
-              <button className="Cart-Add-Button">Add to Cart</button>
+              <button className="Cart-Add-Button" onClick={()=>this.props.addToCart(option, 1) } >Add to Cart</button>
               <button className="Buy-Now-Button">Buy Now!</button>
             </div>
           )
