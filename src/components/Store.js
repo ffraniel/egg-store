@@ -13,7 +13,11 @@ const Store = (props)=>{
         <div className="Store-border"></div>
         <h2>{props.location}</h2>
         <StoreNav handleStoreNav={props.handleStoreNav} storeLocation={props.storeLocation} />
-        <StoreOptions storeLocation={props.storeLocation} />
+        <StoreOptions 
+          storeLocation={props.storeLocation} 
+          addToCart={props.addToCart} 
+          removeFromCart={props.removeFromCart}
+        />
       </div>
     </div>
   )
