@@ -29,13 +29,13 @@ class StoreOptions extends Component {
         {this.state.options.map((option)=>{
           var optionRareClass = option.includeRare ? 'Product-Option Product-Option-Rare' : 'Product-Option';
           return(
-            <div className={optionRareClass}>
+            <div className={optionRareClass} key={option.name}>
               <h3 className="Product-Option-Title">{option.name}</h3>
               <h5 className="Product-Option-Price">£{option.price}</h5>
               {/* <img src={} className="" alt="eggs" /> */}
               <p className="">{option.number} {option.includeRare ? 'Rare Breed': ''} Eggs</p>
               <button className="Cart-Add-Button">Add to Cart</button>
-              <button classname="Buy-Now-Button">Buy Now!</button>
+              <button className="Buy-Now-Button">Buy Now!</button>
             </div>
           )
         })}
