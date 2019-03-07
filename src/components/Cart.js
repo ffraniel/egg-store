@@ -24,7 +24,14 @@ const Cart = (props) => {
         );
       })}
       {props.cart.length > 0 &&
-        <button onClick={()=>{ props.handleNav("checkout") }} className="Checkout-Button">Checkout</button>
+        <button 
+          onClick={()=>{ 
+            props.loadingWait();
+            props.handleNav("Checkout");
+          }} 
+          className="Checkout-Button">
+            Checkout
+        </button>
       }
     </section>
   )

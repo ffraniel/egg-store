@@ -10,6 +10,7 @@ const Store = (props)=>{
           addToCart={props.addToCart} 
           removeFromCart={props.removeFromCart}
           handleNav={props.handleNav}
+          loadingWait={props.loadingWait}
         />
       </div>
     </div>

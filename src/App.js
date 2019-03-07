@@ -5,6 +5,7 @@ import UserNav from './components/UserNav';
 import Logo from './components/Logo';
 import Cart from './components/Cart';
 import Introduction from './components/Introduction';
+import Loading from './components/Loading';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.makeCartVisible = this.makeCartVisible.bind(this);
+    this.loadingWait = this.loadingWait.bind(this);
   }
 
   makeCartVisible () {
@@ -30,11 +32,23 @@ class App extends Component {
   handleNav (location) {
     console.log(location);
     this.setState({
-      location
+      location,
+      cartVisible: false
     });
     setTimeout(()=>{
       console.log("the state is now set to : ", this.state.location);
-    }, 2000)
+    }, 1500)
+  }
+
+  loadingWait () {
+    this.setState({
+      loading: true
+    });
+    setTimeout(()=>{
+      this.setState({
+        loading: false
+      })
+    }, 1000)
   }
 
   addToCart(item, quantity) {
@@ -63,6 +77,7 @@ class App extends Component {
           <UserNav handleNav={this.handleNav} makeCartVisible={this.makeCartVisible}/>
           <Logo handleNav={this.handleNav}/>
         </header>
+        {this.state.loading && <Loading />}
         {this.state.location === 'Home' && 
           <div className="store">
             <Introduction />
@@ -71,6 +86,7 @@ class App extends Component {
               addToCart={this.addToCart}
               removeFromCart={this.removeFromCart}
               handleNav={this.handleNav}
+              loadingWait={this.loadingWait}
             />  
           </div>
         }
@@ -87,6 +103,7 @@ class App extends Component {
           makeCartVisible={this.makeCartVisible} 
           addToCart={this.addToCart}
           removeFromCart={this.removeFromCart}
+          loadingWait={this.loadingWait}
         />
       </div>
     );
