@@ -4,19 +4,19 @@ import Store from './components/Store';
 import UserNav from './components/UserNav';
 import Logo from './components/Logo';
 import Cart from './components/Cart';
+import Introduction from './components/Introduction';
+import UserNavButton from './components/UserNavButton';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state={
       location: 'Home',
-      storeLocation: undefined,
       loading: false,
       cart: [],
       cartVisible: false
     };
     this.handleNav = this.handleNav.bind(this);
-    this.handleStoreNav = this.handleStoreNav.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.makeCartVisible = this.makeCartVisible.bind(this);
@@ -35,16 +35,6 @@ class App extends Component {
     });
     setTimeout(()=>{
       console.log("the state is now set to : ", this.state.location);
-    }, 2000)
-  }
-
-  handleStoreNav (storeLocation) {
-    console.log("store location: ", storeLocation);
-    this.setState({
-      storeLocation
-    })
-    setTimeout(()=>{
-      console.log("the store location is now set to : ", this.state.storeLocation);
     }, 2000)
   }
 
@@ -74,13 +64,23 @@ class App extends Component {
           <UserNav handleNav={this.handleNav} makeCartVisible={this.makeCartVisible}/>
           <Logo handleNav={this.handleNav}/>
         </header>
-        <Store 
-          location={this.state.location} 
-          handleStoreNav={this.handleStoreNav} 
-          storeLocation={this.state.storeLocation}
-          addToCart={this.addToCart}
-          removeFromCart={this.removeFromCart}
-        />
+        {this.state.location === 'Home' && 
+          <div className="store">
+            <Introduction />
+            <Store 
+              location={this.state.location}
+              addToCart={this.addToCart}
+              removeFromCart={this.removeFromCart}
+              handleNav={this.handleNav}
+            />  
+          </div>
+        }
+        {this.state.location === 'Meet the Hens' && 
+          <p>MEETING HENS</p>
+        }
+        {this.state.location === 'Checkout' && 
+          <p>CHECKING OUT</p>
+        }
         <Cart 
           cart={this.state.cart} 
           cartVisible={this.state.cartVisible} 
