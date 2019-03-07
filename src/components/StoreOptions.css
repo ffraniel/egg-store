@@ -1,15 +1,44 @@
 .Store-Options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 40px;
   margin: 40px 0;
 }
 
 .Product-Option {
   border: solid 0.8px navy;  
   border-radius: 10px;
+  background: lightgray;
+}
+
+.Product-Option-Title {
+  margin: 10px 5%;
 }
 
 .Product-Option-Price {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.Product-Buttons-Container {
+  
+}
+
+.Option-Buttons {
+  display: block;
+  border: solid rgb(247, 243, 243) 2px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-family: 'Unkempt', cursive; 
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 200px;
+}
+
+.Option-Buttons:hover {
+  background-color: blue;
+  border-color: black;
 }
