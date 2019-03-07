@@ -5,7 +5,6 @@ import UserNav from './components/UserNav';
 import Logo from './components/Logo';
 import Cart from './components/Cart';
 import Introduction from './components/Introduction';
-import UserNavButton from './components/UserNavButton';
 
 class App extends Component {
   constructor(props) {
