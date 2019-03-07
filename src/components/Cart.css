@@ -17,10 +17,17 @@
   bottom: 0;
 }
 
+.Cart-Peeping {
+  bottom: 20px;
+}
+
 .Popup-Minimizer {
   color: white;
-  float: right; 
-  font-size: 45px;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size: 30px;
+  font-family: arial;
 }
 
 .Popup-Minimizer:hover {
