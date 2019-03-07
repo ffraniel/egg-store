@@ -7,6 +7,7 @@ import Cart from './components/Cart';
 import Introduction from './components/Introduction';
 import Loading from './components/Loading';
 import About from './components/About';
+import Checkout from './components/Checkout';
 
 class App extends Component {
   constructor(props) {
@@ -95,7 +96,12 @@ class App extends Component {
           <About />
         }
         {this.state.location === 'Checkout' && 
-          <p>CHECKING OUT</p>
+          <Checkout 
+            cart={this.state.cart}
+            addToCart={this.addToCart}
+            removeFromCart={this.removeFromCart}
+            loadingWait={this.loadingWait}
+          />
         }
         <Cart 
           cart={this.state.cart} 

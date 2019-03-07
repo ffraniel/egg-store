@@ -1,0 +1,49 @@
+.CartGrid {
+  display: grid;
+}
+
+.CartGrid-Headings {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.Cart-Items {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.Cart-Item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.CartGrid-Border {
+  border-bottom: 2px solid #333333;
+}
+
+.CartGrid-Totals {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.Cart-Quantity .Cart-Button {
+  display: inline;
+}
+
+.Cart-Quantity p {
+  display: inline;
+  margin: 0 10px;
+}
+
+.CartGrid-Buttons {
+  float: right;
+}
+
+.CartGrid-Pay-Buttons {
+  padding: 10px;
+  width: 200px;
+  border: solid black 2px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin: 20px;
+}
