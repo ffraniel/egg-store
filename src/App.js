@@ -6,6 +6,7 @@ import Logo from './components/Logo';
 import Cart from './components/Cart';
 import Introduction from './components/Introduction';
 import Loading from './components/Loading';
+import About from './components/About';
 
 class App extends Component {
   constructor(props) {
@@ -91,7 +92,7 @@ class App extends Component {
           </div>
         }
         {this.state.location === 'Meet the Hens' && 
-          <p>MEETING HENS</p>
+          <About />
         }
         {this.state.location === 'Checkout' && 
           <p>CHECKING OUT</p>

@@ -1,0 +1,34 @@
+.About-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.About-inner {
+  width: 75%;
+}
+
+.About-border {
+  border-bottom: 2px solid #333333;
+}
+
+.Chicken-Coup {
+  text-align: center;
+  /* display: grid;
+  grid-template-columns: 1fr; */
+}
+
+.Chicken-Coup-Inner {
+  margin: 0 auto;
+  width: 75%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.Chicken-Box {
+  border: solid 0.8px navy;  
+  border-radius: 10px;
+  background: lightgray;
+}
