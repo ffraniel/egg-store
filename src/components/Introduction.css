@@ -1,0 +1,14 @@
+.Introduction-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Introduction-inner {
+  width: 75%;
+}
+
+.Introduction-border {
+  border-bottom: 2px solid #333333;
+}
