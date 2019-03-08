@@ -88,7 +88,11 @@ class App extends Component {
     if (currentCart.length > 0) {
       for (var i = 0; i < currentCart.length; i ++) {
         if (currentCart[i].name === item.name) {
-          currentCart[i].quantity = currentCart[i].quantity - quantity;
+          if (currentCart[i].quantity === 0) {
+            currentCart.splice(i);
+          } else {
+            currentCart[i].quantity = currentCart[i].quantity - quantity;
+          }
         }
       }
     }
