@@ -14,12 +14,14 @@ const Cart = (props) => {
       }
 
       {props.cart.map((product, i)=>{
+        var cumulativePrice = (product.price * product.quantity).toFixed(2);
         return (
           <section key={product.name + i}>
             <h3>{product.name}</h3>
             <h3>{product.price}</h3>
-              <button onClick={()=>{props.addToCart(product, 1)}}>+</button>
-              <button onClick={()=>{props.removeFromCart(product, 1)}}>-</button>
+            <button onClick={()=>{props.addToCart(product, 1)}}>+</button>
+            <h3>£{cumulativePrice}</h3>
+            <button onClick={()=>{props.removeFromCart(product, 1)}}>-</button>
           </section>
         );
       })}
