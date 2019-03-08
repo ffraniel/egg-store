@@ -59,10 +59,17 @@ class App extends Component {
     for (let i = quantity; i > 0; i--) {
       currentCart.push(item);
     }
-    this.setState({
-      cart: currentCart,
-      cartVisible: true,
-    });
+    if(this.state.location === 'Checkout') {
+      this.setState({
+        cart: currentCart,
+        cartVisible: false,
+      });
+    } else {
+      this.setState({
+        cart: currentCart,
+        cartVisible: true,
+      });
+    }
   }
 
   removeFromCart(item, quantity) {
