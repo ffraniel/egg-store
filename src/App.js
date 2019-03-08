@@ -56,9 +56,16 @@ class App extends Component {
       for (var i = 0; i < currentCart.length; i ++) {
         if (currentCart[i].name === item.name) {
           currentCart[i].quantity = currentCart[i].quantity + quantity;
+          item.completed = true
         }
       }
-    } else {
+      if (item.completed === undefined) {
+        let itemObject = item;
+        itemObject.quantity = quantity; 
+        currentCart.push(itemObject);
+      }
+    } 
+    else {
       let itemObject = item;
       itemObject.quantity = quantity;
       currentCart.push(itemObject);
