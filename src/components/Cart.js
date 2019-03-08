@@ -4,10 +4,6 @@ import EmptyCart from './EmptyCart';
 
 const Cart = (props) => {
   var cartVisibleClass = props.cartVisible ? 'Popup-Cart Cart-Visible' : 'Popup-Cart';
-  // var totalCost = props.cart.reduce((acc, currentVal, currentInd, array)=>{
-  //   console.log("acc: ", acc)
-  //   return acc + (currentVal.price * currentVal.quantity).toFixed(2);
-  // }, 0);
   var totalCost = 0;
   props.cart.forEach((item)=>{
     totalCost = totalCost + (item.price * item.quantity);

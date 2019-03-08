@@ -2,7 +2,10 @@ import React from 'react';
 import './CartGrid.css';
 
 const CartGrid = (props) => {
-  console.log(props);
+  var totalCost = 0;
+  props.cart.forEach((item)=>{
+    totalCost = totalCost + (item.price * item.quantity);
+  });
   return(
     <div className="CartGrid">
       <div className="CartGrid-Headings">
@@ -13,16 +16,18 @@ const CartGrid = (props) => {
       </div>
       <div className="Cart-Items">
         {props.cart && props.cart.length > 0 && props.cart.map((product, i)=>{
+          var itemSubTotal = (product.price * product.quantity).toFixed(2);
+
           return (
             <section key={product.name + i} className="Cart-Item">
               <h3>{product.name}</h3>
               <h3>{product.price.toFixed(2)}</h3>
               <div className="Cart-Quantity">
                 <button className="Cart-Plus Cart-Button" onClick={()=>{props.addToCart(product, 1)}}>+</button>
-                <p>1</p>
+                <p>{product.quantity}</p>
                 <button className="Cart-Minus Cart-Button" onClick={()=>{props.removeFromCart(product, 1)}}>-</button>
               </div>
-              <h3>{product.price.toFixed(2)}</h3>
+              <h3>{itemSubTotal}</h3>
             </section>
           );
         })}
@@ -30,7 +35,7 @@ const CartGrid = (props) => {
       <div className="CartGrid-Border"></div>
       <div className="CartGrid-Totals">
         <h3>Total</h3>
-        <h3>£4.90</h3>
+        <h3>{totalCost.toFixed(2)}</h3>
       </div>
       <div className="CartGrid-Buttons">
         <button className="CartGrid-Pay CartGrid-Pay-Buttons" onClick={()=>{console.log("paying")}} >Pay</button>

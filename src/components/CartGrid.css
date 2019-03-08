@@ -28,6 +28,19 @@
 
 .Cart-Quantity .Cart-Button {
   display: inline;
+  border: solid rgb(82, 82, 82) 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-family: 'Unkempt', cursive; 
+  height: auto;
+  font-weight: 600;
+}
+
+.Cart-Quantity .Cart-Button:hover {
+  background-color: blue;
+  border-color: black;
 }
 
 .Cart-Quantity p {
@@ -40,10 +53,21 @@
 }
 
 .CartGrid-Pay-Buttons {
+  border: solid rgb(82, 82, 82) 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-family: 'Unkempt', cursive; 
+  height: auto;
+  font-weight: 600;
   padding: 10px;
   width: 200px;
-  border: solid black 2px;
-  border-radius: 5px;
   font-size: 1.1rem;
   margin: 20px;
+}
+
+.CartGrid-Pay-Buttons:hover {
+  background-color: blue;
+  border-color: black;
 }
