@@ -33,3 +33,59 @@
 .Popup-Minimizer:hover {
   color:rgb(216, 209, 209);
 }
+
+.Cart-Grid-Titles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  
+}
+
+.Cart-Grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.Cart-Incrementer * {
+  display: inline-block;
+}
+
+.Cart-Quantity-Number {
+  padding: 10px;
+  width: 15px;
+  text-align: center;
+}
+
+.Cart-Incrementer button {
+  border: solid rgb(247, 243, 243) 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-family: 'Unkempt', cursive; 
+  height: auto;
+  font-weight: 600;
+}
+.Cart-Incrementer button:hover {
+  background-color: blue;
+  border-color: black;
+}
+
+
+.Checkout-Button {
+  border: solid rgb(247, 243, 243) 2px;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-family: 'Unkempt', cursive; 
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 200px;
+  margin-top: 40px;
+  float: right;
+}
+
+.Checkout-Button:hover {
+  background-color: blue;
+  border-color: black;
+}
