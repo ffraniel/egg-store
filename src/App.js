@@ -37,9 +37,6 @@ class App extends Component {
       location,
       cartVisible: false
     });
-    setTimeout(()=>{
-      console.log("the state is now set to : ", this.state.location);
-    }, 1500)
   }
 
   loadingWait () {
@@ -50,14 +47,21 @@ class App extends Component {
       this.setState({
         loading: false
       })
-    }, 1000)
+    }, 800)
   }
 
   addToCart(item, quantity) {
-    console.log("adding to cart")
-    let currentCart = this.state.cart;
-    for (let i = quantity; i > 0; i--) {
-      currentCart.push(item);
+    var currentCart = this.state.cart;
+    if (currentCart.length > 0) {
+      for (var i = 0; i < currentCart.length; i ++) {
+        if (currentCart[i].name === item.name) {
+          currentCart[i].quantity = currentCart[i].quantity + quantity;
+        }
+      }
+    } else {
+      let itemObject = item;
+      itemObject.quantity = quantity;
+      currentCart.push(itemObject);
     }
     if(this.state.location === 'Checkout') {
       this.setState({
@@ -73,10 +77,17 @@ class App extends Component {
   }
 
   removeFromCart(item, quantity) {
-    let currentCart = this.state.cart;
-    for (let i = currentCart.length; i > 0; i--) {
-      console.log("this is in my cart: ", currentCart[i])
+    var currentCart = this.state.cart;
+    if (currentCart.length > 0) {
+      for (var i = 0; i < currentCart.length; i ++) {
+        if (currentCart[i].name === item.name) {
+          currentCart[i].quantity = currentCart[i].quantity - quantity;
+        }
+      }
     }
+    this.setState({
+      cart: currentCart
+    });
   }
 
   render() {
