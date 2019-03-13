@@ -1,9 +1,9 @@
 import React from 'react';
 import './CartGrid.css';
 
-const CartGrid = (props) => {
+const CartGrid = ({cart, addToCart, removeFromCart}) => {
   var totalCost = 0;
-  props.cart.forEach((item)=>{
+  cart.forEach((item)=>{
     totalCost = totalCost + (item.price * item.quantity);
   });
   return(
@@ -15,7 +15,7 @@ const CartGrid = (props) => {
         <h3>Subtotal</h3>
       </div>
       <div className="Cart-Items">
-        {props.cart && props.cart.length > 0 && props.cart.map((product, i)=>{
+        {cart && cart.length > 0 && cart.map((product, i)=>{
           var itemSubTotal = (product.price * product.quantity).toFixed(2);
 
           return (
@@ -23,9 +23,9 @@ const CartGrid = (props) => {
               <h3>{product.name}</h3>
               <h3>{product.price.toFixed(2)}</h3>
               <div className="Cart-Quantity">
-                <button className="Cart-Plus Cart-Button" onClick={()=>{props.addToCart(product, 1)}}>+</button>
+                <button className="Cart-Plus Cart-Button" onClick={()=>{addToCart(product, 1)}}>+</button>
                 <p>{product.quantity}</p>
-                <button className="Cart-Minus Cart-Button" onClick={()=>{props.removeFromCart(product, 1)}}>-</button>
+                <button className="Cart-Minus Cart-Button" onClick={()=>{removeFromCart(product, 1)}}>-</button>
               </div>
               <h3>{itemSubTotal}</h3>
             </section>

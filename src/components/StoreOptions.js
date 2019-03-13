@@ -36,7 +36,7 @@ class StoreOptions extends Component {
               {/* <img src={} className="" alt="eggs" /> */}
               <p className="">{option.number} Rare Breed Eggs</p>
               <div className="Product-Buttons-Container">
-                <button className="Cart-Add-Button Option-Buttons" onClick={()=>this.props.addToCart(option, 1) }>Add to Cart</button>
+                <button className="Cart-Add-Button Option-Buttons" onClick={()=>{this.props.addToCart(option, 1)} }>Add to Cart</button>
                 <button className="Buy-Now-Button Option-Buttons" onClick={()=>this.buyNow(option, 1) }>Buy Now!</button>
                 <button className="Reserve-Eggs-Button Option-Buttons" onClick={()=>this.buyNow(option, 1) }>Reserve Eggs</button>
               </div>

@@ -2,18 +2,18 @@ import React from 'react';
 import './Cart.css';
 import EmptyCart from './EmptyCart';
 
-const Cart = (props) => {
-  var cartVisibleClass = props.cartVisible ? 'Popup-Cart Cart-Visible' : 'Popup-Cart';
+const Cart = ({cartVisible, cart, makeCartVisible, addToCart, removeFromCart, loadingWait, handleNav }) => {
+  var cartVisibleClass = cartVisible ? 'Popup-Cart Cart-Visible' : 'Popup-Cart';
   var totalCost = 0;
-  props.cart.forEach((item)=>{
+  cart.forEach((item)=>{
     totalCost = totalCost + (item.price * item.quantity);
   });
   return(
     <section className={cartVisibleClass}>
       <h2>Cart</h2>
-      <h1 className="Popup-Minimizer" onClick={()=>{props.makeCartVisible()}}>X</h1>
+      <h1 className="Popup-Minimizer" onClick={()=>{makeCartVisible()}}>X</h1>
 
-      {props.cartVisible && props.cart.length === 0 && 
+      {cartVisible && cart.length === 0 && 
         <EmptyCart />
       }
       <div className="Cart-Grid-Titles">
@@ -21,21 +21,21 @@ const Cart = (props) => {
         <h3>Price</h3>
         <h3>Quantity</h3>
       </div>
-      {props.cart.map((product, i)=>{
+      {cart.map((product, i)=>{
         var cumulativePrice = (product.price * product.quantity).toFixed(2);
         return (
           <section key={product.name + i} className="Cart-Grid">
             <h3>{product.name}</h3>
             <h3>£{cumulativePrice}</h3>
             <div className="Cart-Incrementer">
-              <button onClick={()=>{props.addToCart(product, 1)}}>+</button>
+              <button onClick={()=>{addToCart(product, 1)}}>+</button>
               <h3 className="Cart-Quantity-Number">{product.quantity}</h3>
-              <button onClick={()=>{props.removeFromCart(product, 1)}}>-</button>
+              <button onClick={()=>{removeFromCart(product, 1)}}>-</button>
             </div>
           </section>
         );
       })}
-      {props.cart.length > 0 &&
+      {cart.length > 0 &&
         <section className="Cart-Dashboard">
           <div className="Cart-Dash-Grid">
             <h3>Total </h3>
@@ -43,8 +43,8 @@ const Cart = (props) => {
           </div>
           <button 
             onClick={()=>{ 
-              props.loadingWait();
-              props.handleNav("Checkout");
+              loadingWait();
+              handleNav("Checkout");
             }} 
             className="Checkout-Button">
               Checkout
