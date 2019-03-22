@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartGrid.css';
 
-const CartGrid = ({cart, addToCart, removeFromCart}) => {
+const CartGrid = ({cart, addToCart, removeFromCart, updatePaymentVisible, updateReserveVisible, paymentVisible, reserveVisible}) => {
   var totalCost = 0;
   cart.forEach((item)=>{
     totalCost = totalCost + (item.price * item.quantity);
@@ -38,8 +38,14 @@ const CartGrid = ({cart, addToCart, removeFromCart}) => {
         <h3>{totalCost.toFixed(2)}</h3>
       </div>
       <div className="CartGrid-Buttons">
-        <button className="CartGrid-Pay CartGrid-Pay-Buttons" onClick={()=>{console.log("paying")}} >Pay</button>
-        <button className="CartGrid-Reserve CartGrid-Pay-Buttons" onClick={()=>{console.log("reserve")}}>Reserve for Collection</button>
+        <button className="CartGrid-Pay CartGrid-Pay-Buttons" onClick={()=>{
+          console.log("paying");
+          updatePaymentVisible(!paymentVisible);
+        }} >Pay</button>
+        <button className="CartGrid-Reserve CartGrid-Pay-Buttons" onClick={()=>{
+          console.log("reserve");
+          updateReserveVisible(!reserveVisible);
+        }}>Reserve for Collection</button>
       </div>
     </div>
   )
