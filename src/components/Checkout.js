@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Checkout.css';
 import CartGrid from './CartGrid';
+import PaymentElement from './PaymentElement';
+import ReserveElement from './ReserveElement';
 
 const Checkout = ({cart, addToCart, removeFromCart}) => {
   const [paymentVisible, updatePaymentVisible] = useState(false);
@@ -20,8 +22,8 @@ const Checkout = ({cart, addToCart, removeFromCart}) => {
           paymentVisible={paymentVisible}
           reserveVisible={reserveVisible}
         />
-        {paymentVisible && <p>Showing Payment</p>}
-        {reserveVisible && <p>Showing Reserve</p>}
+        {paymentVisible && <PaymentElement/>}
+        {reserveVisible && <ReserveElement/>}
       </section>
     </div>
   );
