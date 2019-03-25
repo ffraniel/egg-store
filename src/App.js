@@ -138,10 +138,17 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <UserNav handleNav={this.handleNav} makeCartVisible={this.makeCartVisible}/>
+          <UserNav 
+            handleNav={this.handleNav} 
+            makeCartVisible={this.makeCartVisible}
+          />
           <Logo handleNav={this.handleNav}/>
         </header>
-        {this.state.eggsInStore && <EggsInStore eggsInStore={this.state.eggsInStore} closeEggsInStore={this.closeEggsInStore}/>}
+        {this.state.eggsInStore && 
+          <EggsInStore 
+            eggsInStore={this.state.eggsInStore} 
+            closeEggsInStore={this.closeEggsInStore}
+          />}
         {this.state.loading && <Loading />}
         {this.state.location === 'Home' && 
           <div className="store">
