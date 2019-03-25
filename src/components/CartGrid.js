@@ -1,11 +1,21 @@
 import React from 'react';
 import './CartGrid.css';
 
-const CartGrid = ({cart, addToCart, removeFromCart, updatePaymentVisible, updateReserveVisible, paymentVisible, reserveVisible}) => {
+const CartGrid = ({
+  cart, 
+  addToCart, 
+  removeFromCart, 
+  updatePaymentVisible, 
+  updateReserveVisible, 
+  paymentVisible, 
+  reserveVisible
+  }) => {
+
   var totalCost = 0;
   cart.forEach((item)=>{
     totalCost = totalCost + (item.price * item.quantity);
   });
+
   return(
     <div className="CartGrid">
       <div className="CartGrid-Headings">
@@ -30,22 +40,27 @@ const CartGrid = ({cart, addToCart, removeFromCart, updatePaymentVisible, update
               <h3>{itemSubTotal}</h3>
             </section>
           );
+
         })}
+
       </div>
       <div className="CartGrid-Border"></div>
       <div className="CartGrid-Totals">
         <h3>Total</h3>
         <h3>{totalCost.toFixed(2)}</h3>
       </div>
+
       <div className="CartGrid-Buttons">
         <button className="CartGrid-Pay CartGrid-Pay-Buttons" onClick={()=>{
           console.log("paying");
           updatePaymentVisible(!paymentVisible);
         }} >Pay</button>
+
         <button className="CartGrid-Reserve CartGrid-Pay-Buttons" onClick={()=>{
           console.log("reserve");
           updateReserveVisible(!reserveVisible);
         }}>Reserve for Collection</button>
+
       </div>
     </div>
   )
