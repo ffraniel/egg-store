@@ -6,3 +6,14 @@
 .EggsInStore p {
   text-align: center;
 }
+
+.CloseWarning {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0 30px;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.CloseWarning:hover {
+  color: grey;
+}
