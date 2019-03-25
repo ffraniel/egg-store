@@ -8,6 +8,7 @@ import Introduction from './components/Introduction';
 import Loading from './components/Loading';
 import About from './components/About';
 import Checkout from './components/Checkout';
+import EggsInStore from './components/EggsInStore';
 
 class App extends Component {
   constructor(props) {
@@ -16,13 +17,16 @@ class App extends Component {
       location: 'Home',
       loading: false,
       cart: [],
-      cartVisible: false
+      cartVisible: false,
+      eggsInStore: null
     };
     this.handleNav = this.handleNav.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.makeCartVisible = this.makeCartVisible.bind(this);
     this.loadingWait = this.loadingWait.bind(this);
+    this.checkOrderCanBeCompleted = this.checkOrderCanBeCompleted.bind(this);
+    this.closeEggsInStore = this.closeEggsInStore.bind(this);
   }
 
   makeCartVisible () {
@@ -101,6 +105,35 @@ class App extends Component {
     });
   }
 
+  async checkOrderCanBeCompleted () {
+    var currentCart = this.state.cart;
+    var currentEggsInCart = currentCart.reduce((acc, item)=>{
+      return acc + (item.number * item.quantity);
+    }, 0);
+    const response = await fetch('https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/quantity')
+    const resJSON = await response.json();  
+    // add error handling
+    const currentEggsInStore = resJSON.total;
+    if (currentEggsInCart > currentEggsInStore) {
+      this.setState({
+        eggsInStore: currentEggsInStore
+      });
+      return false;
+    } else {
+      this.setState({
+        eggsInStore: null,
+      });
+      return true;
+    }
+  };
+
+  closeEggsInStore () {
+    this.setState({
+      eggsInStore: null
+    })
+  }
+  
+
   render() {
     return (
       <div className="App">
@@ -108,6 +141,7 @@ class App extends Component {
           <UserNav handleNav={this.handleNav} makeCartVisible={this.makeCartVisible}/>
           <Logo handleNav={this.handleNav}/>
         </header>
+        {this.state.eggsInStore && <EggsInStore eggsInStore={this.state.eggsInStore}/>}
         {this.state.loading && <Loading />}
         {this.state.location === 'Home' && 
           <div className="store">
@@ -130,6 +164,7 @@ class App extends Component {
             addToCart={this.addToCart}
             removeFromCart={this.removeFromCart}
             loadingWait={this.loadingWait}
+            checkOrderCanBeCompleted={this.checkOrderCanBeCompleted}
           />
         }
         <Cart 
