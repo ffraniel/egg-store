@@ -9,6 +9,7 @@ import Loading from './components/Loading';
 import About from './components/About';
 import Checkout from './components/Checkout';
 import EggsInStore from './components/EggsInStore';
+import OrderCompleted from './components/OrderCompleted';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class App extends Component {
       loading: false,
       cart: [],
       cartVisible: false,
-      eggsInStore: null
+      eggsInStore: null,
+      orderMade: null
     };
     this.handleNav = this.handleNav.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -132,7 +134,6 @@ class App extends Component {
       eggsInStore: null
     })
   }
-  
 
   render() {
     return (
@@ -172,7 +173,11 @@ class App extends Component {
             removeFromCart={this.removeFromCart}
             loadingWait={this.loadingWait}
             checkOrderCanBeCompleted={this.checkOrderCanBeCompleted}
+            handleNav={this.handleNav}
           />
+        }
+        {this.state.location === 'Order Completed' &&
+          <OrderCompleted orderMade={this.state.orderMade}/>
         }
         <Cart 
           cart={this.state.cart} 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ReserveElement.css';
 
-const ReserveElement = ({checkOrderCanBeCompleted}) => {
+const ReserveElement = ({checkOrderCanBeCompleted, handleNav}) => {
   const [ name, updateName ] = useState('');
   const [ details, updateDetails ] = useState('');
   const [ showReserveButton, updateShowReserveButton ] = useState(false);
@@ -18,7 +18,12 @@ const ReserveElement = ({checkOrderCanBeCompleted}) => {
     };
   };
 
-  //add andle order submit and extract inline function
+  const handleSubmitOrder = (e) => {
+    e.preventDefault(); 
+    console.log("LAST SUBMISSION HERE");
+    // bring down order creation order from app.js
+    handleNav('Order Completed');
+  }
 
   return (
     <section className="Reserve">
@@ -52,10 +57,7 @@ const ReserveElement = ({checkOrderCanBeCompleted}) => {
       </form>
 
       {showReserveButton && 
-        <form className="Reserve-Button-Form" onSubmit={(e)=>{
-            e.preventDefault(); 
-            console.log("LAST SUBMISSION HERE");
-          }}>
+        <form className="Reserve-Button-Form" onSubmit={handleSubmitOrder}>
           <input type="submit" className="CartGrid-Pay-Buttons" value="Reserve Your Eggs"/>
         </form>
       }
