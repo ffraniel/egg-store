@@ -4,7 +4,12 @@ import CartGrid from './CartGrid';
 import PaymentElement from './PaymentElement';
 import ReserveElement from './ReserveElement';
 
-const Checkout = ({cart, addToCart, removeFromCart}) => {
+const Checkout = ({
+    cart, 
+    addToCart, 
+    removeFromCart, 
+    checkOrderCanBeCompleted
+  }) => {
   const [paymentVisible, updatePaymentVisible] = useState(false);
   const [reserveVisible, updateReserveVisible] = useState(false);
 
@@ -22,8 +27,8 @@ const Checkout = ({cart, addToCart, removeFromCart}) => {
           paymentVisible={paymentVisible}
           reserveVisible={reserveVisible}
         />
-        {paymentVisible && <PaymentElement/>}
-        {reserveVisible && <ReserveElement/>}
+        {paymentVisible && <PaymentElement />}
+        {reserveVisible && <ReserveElement checkOrderCanBeCompleted={checkOrderCanBeCompleted} />}
       </section>
     </div>
   );
