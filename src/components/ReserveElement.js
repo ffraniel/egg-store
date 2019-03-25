@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
 import './ReserveElement.css';
 
-const ReserveElement = () => {
+const ReserveElement = ({checkOrderCanBeCompleted}) => {
   const [ name, updateName ] = useState('');
   const [ details, updateDetails ] = useState('');
+  const [ showReserveButton, updateShowReserveButton ] = useState(false);
 
-  const handleSubmitReserve = (e) => {
+  const handleCheckReserve = (e) => {
     e.preventDefault();
     console.log(`submitting details of ${name} for ${details}.`);
-    updateName('');
-    updateDetails('');
+    if(checkOrderCanBeCompleted()){
+      console.log("it can be completed")
+      updateShowReserveButton(true);
+    } else{
+      updateShowReserveButton(false);
+      console.log("it can't be done")
+    };
   };
+
+  //add andle order submit and extract inline function
 
   return (
     <section className="Reserve">
       <h3>Making a reservation</h3>
       <p>In order to reserve your order we will need some details from you</p>
 
-      <form onSubmit={handleSubmitReserve}>
+      <form onSubmit={handleCheckReserve}>
         <label>
           Name
           <input
@@ -37,10 +45,21 @@ const ReserveElement = () => {
             value={details} 
             placeholder="When would you be able to collect the eggs" 
             name="name" 
+            required
           />
         </label>
         <input className="CartGrid-Pay-Buttons" type="submit" value="Check Order" />
       </form>
+
+      {showReserveButton && 
+        <form className="Reserve-Button-Form" onSubmit={(e)=>{
+            e.preventDefault(); 
+            console.log("LAST SUBMISSION HERE");
+          }}>
+          <input type="submit" className="CartGrid-Pay-Buttons" value="Reserve Your Eggs"/>
+        </form>
+      }
+
     </section>
   );
 };
