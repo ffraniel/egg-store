@@ -110,13 +110,18 @@ class App extends Component {
 
   async checkOrderCanBeCompleted () {
     var currentCart = this.state.cart;
-    console.log("Cart: ", currentCart)
+    this.setState({
+      loading: true
+    });
     var currentEggsInCart = currentCart.reduce((acc, item)=>{
       return acc + (item.number * item.quantity);
     }, 0);
     const response = await fetch('https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/quantity')
     const resJSON = await response.json();  
     // add error handling
+    this.setState({
+      loading: false
+    });
     const currentEggsInStore = resJSON.total;
     if (currentEggsInCart > currentEggsInStore) {
       this.setState({
