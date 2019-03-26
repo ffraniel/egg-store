@@ -142,12 +142,14 @@ class App extends Component {
     })
   };
 
-  submitOrder ({name, details, paid}) {
+  submitOrder ({name, details, paid, email, telephone}) {
     const order = {
       name: name,
 	    paid: paid,
 	    notes: details,
-	    order: this.state.cart
+      order: this.state.cart,
+      email: email,
+      telephone: telephone
     };
     this.setState({loading: true});
 
