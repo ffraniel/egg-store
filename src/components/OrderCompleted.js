@@ -8,9 +8,8 @@ const OrderCompleted = ({order, handleNav}) => {
     <div className="Order-Completed">
       <div className="Order-Completed-Inner">
         <h1>Order Completed</h1>
-        <OrderReservationMade order={order} />
-        {/* {order.type === 'reservation' && <OrderReservationMade order={order} />}
-        {order.type === 'payment' && <OrderPaymentMade order={order} />} */}
+        {order.paid && <OrderPaymentMade order={order} />} 
+        {!order.paid && <OrderReservationMade order={order} />}    
         <button className="Completed-Back-Button" onClick={()=>{handleNav('Home')}} >Back</button>
       </div>
     </div>
