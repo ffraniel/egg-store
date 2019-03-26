@@ -157,7 +157,8 @@ class App extends Component {
     .then(res => {
         this.setState({
           orderMade: res.newOrder,
-          loading: false
+          loading: false,
+          cart: []
         }, ()=> {
           this.handleNav('Order Completed')
         });
