@@ -29,6 +29,7 @@ class App extends Component {
     this.loadingWait = this.loadingWait.bind(this);
     this.checkOrderCanBeCompleted = this.checkOrderCanBeCompleted.bind(this);
     this.closeEggsInStore = this.closeEggsInStore.bind(this);
+    this.submitOrder = this.submitOrder.bind(this);
   }
 
   makeCartVisible () {
@@ -109,6 +110,7 @@ class App extends Component {
 
   async checkOrderCanBeCompleted () {
     var currentCart = this.state.cart;
+    console.log("Cart: ", currentCart)
     var currentEggsInCart = currentCart.reduce((acc, item)=>{
       return acc + (item.number * item.quantity);
     }, 0);
@@ -133,7 +135,37 @@ class App extends Component {
     this.setState({
       eggsInStore: null
     })
-  }
+  };
+
+  submitOrder ({name, details, paid}) {
+    const order = {
+      name: name,
+	    paid: paid,
+	    notes: details,
+	    order: this.state.cart
+    };
+    this.setState({loading: true});
+
+    return fetch('https://wt-68dc6486277619b05f4ee73ad2a8a48e-0.sandbox.auth0-extend.com/egg-store-be/orders/add', {
+      method: 'POST',
+      body: JSON.stringify(order),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+        this.setState({
+          orderMade: res.newOrder,
+          loading: false
+        }, ()=> {
+          this.handleNav('Order Completed')
+        });
+    })
+    .catch(err => {
+        console.log({error: err})
+    })
+  };
 
   render() {
     return (
@@ -173,11 +205,14 @@ class App extends Component {
             removeFromCart={this.removeFromCart}
             loadingWait={this.loadingWait}
             checkOrderCanBeCompleted={this.checkOrderCanBeCompleted}
-            handleNav={this.handleNav}
+            submitOrder={this.submitOrder}
           />
         }
         {this.state.location === 'Order Completed' &&
-          <OrderCompleted orderMade={this.state.orderMade}/>
+          <OrderCompleted 
+            order={this.state.orderMade}
+            handleNav={this.handleNav}
+          />
         }
         <Cart 
           cart={this.state.cart} 
