@@ -9,7 +9,7 @@ const Checkout = ({
     addToCart, 
     removeFromCart, 
     checkOrderCanBeCompleted,
-    handleNav
+    submitOrder
   }) => {
   const [paymentVisible, updatePaymentVisible] = useState(false);
   const [reserveVisible, updateReserveVisible] = useState(false);
@@ -29,7 +29,11 @@ const Checkout = ({
           reserveVisible={reserveVisible}
         />
         {paymentVisible && <PaymentElement />}
-        {reserveVisible && <ReserveElement checkOrderCanBeCompleted={checkOrderCanBeCompleted} handleNav={handleNav} />}
+        {reserveVisible && 
+          <ReserveElement 
+            checkOrderCanBeCompleted={checkOrderCanBeCompleted}
+            submitOrder={submitOrder}
+          />}
       </section>
     </div>
   );
