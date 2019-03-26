@@ -28,12 +28,14 @@ const Checkout = ({
           paymentVisible={paymentVisible}
           reserveVisible={reserveVisible}
         />
-        {paymentVisible && <PaymentElement />}
-        {reserveVisible && 
+        {paymentVisible && cart.length > 0 && 
+          <PaymentElement 
+        />}
+        {reserveVisible && cart.length > 0 && 
           <ReserveElement 
             checkOrderCanBeCompleted={checkOrderCanBeCompleted}
             submitOrder={submitOrder}
-          />}
+        />}
       </section>
     </div>
   );

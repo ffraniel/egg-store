@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartGrid.css';
 
 const CartGrid = ({
@@ -15,6 +15,14 @@ const CartGrid = ({
   cart.forEach((item)=>{
     totalCost = totalCost + (item.price * item.quantity);
   });
+
+  let cartHasContent = false;
+
+  if (cart.length > 0) {
+    cartHasContent = true;
+  };
+
+  let cartHasNoContentClass = "Cart-Button-Not-Available";
 
   return(
     <div className="CartGrid">
@@ -51,17 +59,30 @@ const CartGrid = ({
       </div>
 
       <div className="CartGrid-Buttons">
-        <button className="CartGrid-Pay CartGrid-Pay-Buttons" onClick={()=>{
-          console.log("paying");
-          updatePaymentVisible(!paymentVisible);
-        }} >Pay</button>
+        <button className={
+          cartHasContent ?
+            "CartGrid-Pay CartGrid-Pay-Buttons":
+            `CartGrid-Pay CartGrid-Pay-Buttons ${cartHasNoContentClass}`
+          } 
+          onClick={()=>{
+            if (cartHasContent) {
+              updatePaymentVisible(!paymentVisible);
+            };
+        }}>Pay</button>
 
-        <button className="CartGrid-Reserve CartGrid-Pay-Buttons" onClick={()=>{
-          console.log("reserve");
-          updateReserveVisible(!reserveVisible);
+        <button className={
+          cartHasContent ? 
+            `CartGrid-Reserve CartGrid-Pay-Buttons` : 
+            `CartGrid-Reserve CartGrid-Pay-Buttons ${cartHasNoContentClass}`
+          } 
+          onClick={()=>{
+            if (cartHasContent) {
+              updateReserveVisible(!reserveVisible);
+            };
         }}>Reserve for Collection</button>
 
       </div>
+      {!cartHasContent ? <p>Nothing in your cart.</p> : null }
     </div>
   )
 };

@@ -71,3 +71,21 @@
   background-color: blue;
   border-color: black;
 }
+
+.Cart-Button-Not-Available {
+  background: grey;
+  color:black;
+}
+
+.Cart-Button-Not-Available:hover {
+  background: grey;
+  color:black;
+}
+
+.No-Content-Popup {
+  display: none;
+}
+
+.Cart-Button-Not-Available:hover .No-Content-Popup {
+  display: block;
+}
