@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './ReserveElement.css';
 
-const ReserveElement = ({checkOrderCanBeCompleted, handleNav}) => {
+const ReserveElement = ({
+    checkOrderCanBeCompleted,
+    submitOrder,
+    handleNav
+  }) => {
   const [ name, updateName ] = useState('');
   const [ details, updateDetails ] = useState('');
   const [ showReserveButton, updateShowReserveButton ] = useState(false);
@@ -22,7 +26,11 @@ const ReserveElement = ({checkOrderCanBeCompleted, handleNav}) => {
     e.preventDefault(); 
     console.log("LAST SUBMISSION HERE");
     // bring down order creation order from app.js
-    handleNav('Order Completed');
+    submitOrder({
+      name: name, 
+      details: details,
+      paid: false
+    });
   }
 
   return (
@@ -31,9 +39,9 @@ const ReserveElement = ({checkOrderCanBeCompleted, handleNav}) => {
       <p>In order to reserve your order we will need some details from you</p>
 
       <form onSubmit={handleCheckReserve}>
-        <label>
-          Name
-          <input
+        <label className="reserve-label" for="name">Name</label>
+          <input 
+            className="reserve-input reserve-text"
             onChange={e => updateName(e.target.value)}
             type="text" 
             value={name} 
@@ -41,18 +49,17 @@ const ReserveElement = ({checkOrderCanBeCompleted, handleNav}) => {
             name="name" 
             required
           />
-        </label>
-        <label>
-          Details
+        <label className="reserve-label" for="details">Details</label>
           <textarea 
+            className="reserve-input reserve-textarea"
             onChange={(e => updateDetails(e.target.value))}
             type="textarea" 
             value={details} 
-            placeholder="When would you be able to collect the eggs" 
-            name="name" 
+            placeholder="Reservation details" 
+            name="details" 
             required
           />
-        </label>
+        
         <input className="CartGrid-Pay-Buttons" type="submit" value="Check Order" />
       </form>
 

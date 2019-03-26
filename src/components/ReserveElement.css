@@ -1,0 +1,27 @@
+.reserve-label {
+  display: block;
+  font-weight: 900;
+}
+
+.reserve-input {
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+
+.reserve-textarea {
+  border: 1.5px solid;
+  border-radius: 2px;
+  padding: 10px; 
+  width: 100%;
+  resize: none;
+  overflow: auto;
+  font-size: 0.9rem;
+}
+
+.reserve-text {
+  width: 100%;
+  border: 1.5px solid;
+  border-radius: 2px;
+  padding: 10px;
+
+}
