@@ -30,6 +30,8 @@ const Checkout = ({
         />
         {paymentVisible && cart.length > 0 && 
           <PaymentElement 
+            checkOrderCanBeCompleted={checkOrderCanBeCompleted}
+            submitOrder={submitOrder}
         />}
         {reserveVisible && cart.length > 0 && 
           <ReserveElement 
