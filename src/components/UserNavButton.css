@@ -1,5 +1,6 @@
 .user-nav-link {
   border: none; 
+  border-radius:3px;
   padding: 5px;
   margin: 5px;
   cursor: pointer;
