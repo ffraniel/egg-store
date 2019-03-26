@@ -15,19 +15,19 @@ const ReserveElement = ({
   const handleCheckReserve = (e) => {
     e.preventDefault();
     console.log(`submitting details of ${name} for ${details}.`);
-    if(checkOrderCanBeCompleted()){
-      console.log("it can be completed")
-      updateShowReserveButton(true);
-    } else{
-      updateShowReserveButton(false);
-      console.log("it can't be done")
-    };
+    if(name && (telephone || email || details)) {
+      if(checkOrderCanBeCompleted()){
+        console.log("it can be completed")
+        updateShowReserveButton(true);
+      } else{
+        updateShowReserveButton(false);
+        console.log("it can't be done")
+      };
+    }
   };
 
   const handleSubmitOrder = (e) => {
     e.preventDefault(); 
-    console.log("LAST SUBMISSION HERE");
-    // bring down order creation order from app.js
     submitOrder({
       name: name, 
       details: details,
@@ -35,7 +35,7 @@ const ReserveElement = ({
       email: email,
       telephone: telephone
     });
-  }
+  };
 
   return (
     <section className="Reserve">
@@ -88,6 +88,7 @@ const ReserveElement = ({
 
       {showReserveButton && 
         <form className="Reserve-Button-Form" onSubmit={handleSubmitOrder}>
+          <h4>The eggs are available. Click below to complete the order.</h4>
           <input type="submit" className="CartGrid-Pay-Buttons" value="Reserve Your Eggs"/>
         </form>
       }
