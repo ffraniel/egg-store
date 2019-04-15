@@ -27,7 +27,7 @@ const CartGrid = ({
   return(
     <div className="CartGrid">
       <div className="CartGrid-Headings">
-        <h3>Name</h3>
+        <h3>Items</h3>
         <h3>Price</h3>
         <h3>Quantity</h3>
         <h3>Subtotal</h3>
