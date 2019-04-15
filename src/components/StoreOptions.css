@@ -1,6 +1,6 @@
 .Store-Options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 40px;
   margin: 40px 0;
 }
@@ -17,10 +17,6 @@
 
 .Product-Option-Price {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-}
-
-.Product-Buttons-Container {
-  
 }
 
 .Option-Buttons {
