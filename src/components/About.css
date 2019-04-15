@@ -15,15 +15,13 @@
 
 .Chicken-Coup {
   text-align: center;
-  /* display: grid;
-  grid-template-columns: 1fr; */
 }
 
 .Chicken-Coup-Inner {
   margin: 0 auto;
   width: 75%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 40px;
 }
 
@@ -31,4 +29,11 @@
   border: solid 0.8px navy;  
   border-radius: 10px;
   background: lightgray;
+  padding: 20px;
+}
+
+.Chicken-Box img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }

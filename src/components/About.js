@@ -1,8 +1,10 @@
 import React from 'react';
 import './About.css';
+import Chickens from '../data/Chickens';
 
 const About = () => (
   <section className="About">
+  {console.log(Chickens)}
     <div className="About-container">
       <div className="About-inner">
         <h1>Meet The Hens</h1>
@@ -14,29 +16,14 @@ const About = () => (
     <div className="Chicken-Coup">
       <div className="Chicken-Coup-Inner">
 
-        <div className="Chicken-Box">
-          <h3>Aracana</h3>
-          <img src="x" alt="chick" />
-          <p>Informationa bout the breeed</p>
-        </div>
+        {Chickens.map((chickenBreed) => 
+          <div className="Chicken-Box">
+            <h3>{chickenBreed.breed}</h3>
+            <img src={chickenBreed.img} alt={chickenBreed.name} />
+            <p>{chickenBreed.details}</p>
+          </div>
+        )}
 
-        <div className="Chicken-Box">
-          <h3>bobbos</h3>
-          <img src="x" alt="chick" />
-          <p>Informationa bout the breeed</p>
-        </div>
-
-        <div className="Chicken-Box">
-          <h3>Flabsters</h3>
-          <img src="x" alt="chick" />
-          <p>Informationa bout the breeed</p>
-        </div>
-
-        <div className="Chicken-Box">
-          <h3>Spandaus</h3>
-          <img src="x" alt="chick" />
-          <p>Informationa bout the breeed</p>
-        </div>
         
       </div>
     </div>
