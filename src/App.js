@@ -97,7 +97,7 @@ class App extends Component {
         if (currentCart[i].name === item.name) {
           currentCart[i].quantity = currentCart[i].quantity - quantity;
           if (currentCart[i].quantity === 0) {
-            currentCart.splice(i);
+            currentCart.splice(i, 1);
           }
         }
       }
