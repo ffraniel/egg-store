@@ -31,7 +31,7 @@ class StoreOptions extends Component {
         {this.state.options.map((option)=>{
           return(
             <div className="Product-Option" key={option.name}>
-              <h3 className="Product-Option-Title">{option.name}</h3>
+              <h3 className="Product-Option-Title">{option.name} including Rare Breed Eggs</h3>
               <h5 className="Product-Option-Price">£{option.price.toFixed(2)}</h5>
               {/* <img src={} className="" alt="eggs" /> */}
               <p className="">{option.number} Rare Breed Eggs</p>
