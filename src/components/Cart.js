@@ -2,7 +2,15 @@ import React from 'react';
 import './Cart.css';
 import EmptyCart from './EmptyCart';
 
-const Cart = ({cartVisible, cart, makeCartVisible, addToCart, removeFromCart, loadingWait, handleNav }) => {
+const Cart = ({
+  cartVisible, 
+  cart, 
+  makeCartVisible, 
+  addToCart, 
+  removeFromCart, 
+  loadingWait, 
+  handleNav 
+  }) => {
   var cartVisibleClass = cartVisible ? 'Popup-Cart Cart-Visible' : 'Popup-Cart';
   var totalCost = 0;
   cart.forEach((item)=>{

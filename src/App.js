@@ -39,7 +39,6 @@ class App extends Component {
   }
 
   handleNav (location) {
-    console.log(location);
     this.setState({
       location,
       cartVisible: false
@@ -54,19 +53,20 @@ class App extends Component {
       this.setState({
         loading: false
       })
-    }, 800)
+    }, 500)
   }
 
   addToCart(item, quantity) {
     var currentCart = this.state.cart;
-    if (currentCart.length > 0) {
+    if (this.state.cart.length > 0) {
+      item.completed = false;
       for (var i = 0; i < currentCart.length; i ++) {
         if (currentCart[i].name === item.name) {
           currentCart[i].quantity = currentCart[i].quantity + quantity;
           item.completed = true
         }
       }
-      if (item.completed === undefined) {
+      if (item.completed === false) {
         let itemObject = item;
         itemObject.quantity = quantity; 
         currentCart.push(itemObject);
@@ -95,10 +95,9 @@ class App extends Component {
     if (currentCart.length > 0) {
       for (var i = 0; i < currentCart.length; i ++) {
         if (currentCart[i].name === item.name) {
+          currentCart[i].quantity = currentCart[i].quantity - quantity;
           if (currentCart[i].quantity === 0) {
             currentCart.splice(i);
-          } else {
-            currentCart[i].quantity = currentCart[i].quantity - quantity;
           }
         }
       }
