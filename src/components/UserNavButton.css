@@ -14,3 +14,10 @@
 .user-nav-link:hover {
   background-color: blue;
 }
+
+@media screen and (max-width: 450px) {
+  .user-nav-link {
+    font-size: 0.9rem;
+    padding: 2px;
+  }
+}

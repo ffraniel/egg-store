@@ -89,3 +89,12 @@
 .Cart-Button-Not-Available:hover .No-Content-Popup {
   display: block;
 }
+
+@media screen and (max-width: 450px) {
+  .CartGrid-Headings h3 {
+    font-size: 1rem;
+  }
+  .Cart-Items h3 {
+    font-size: 1rem;
+  }
+}
