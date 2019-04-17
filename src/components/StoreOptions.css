@@ -6,7 +6,7 @@
 }
 
 .Product-Option {
-  border: solid 0.8px navy;  
+  border: solid 0.8px rgb(8, 8, 8);  
   border-radius: 10px;
   background: lightgray;
 }
