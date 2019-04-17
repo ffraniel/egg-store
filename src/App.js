@@ -181,6 +181,7 @@ class App extends Component {
           <UserNav 
             handleNav={this.handleNav} 
             makeCartVisible={this.makeCartVisible}
+            cart={this.state.cart}
           />
           <Logo handleNav={this.handleNav}/>
         </header>

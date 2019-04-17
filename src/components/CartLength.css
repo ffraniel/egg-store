@@ -1,0 +1,22 @@
+.cart-length {
+  font-size: 0.7rem;
+  border-radius: 100%;
+  display: inline-block;
+  width: 14px;
+  padding: 1px;
+  position: absolute;
+}
+
+.white-background {
+  background: white;
+}
+
+.green-background {
+  background: rgb(19, 218, 19);
+}
+
+@media screen and (max-width: 450px) {
+  .cart-length {
+    font-size: 0.6rem;
+  }
+}
