@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ReserveElement.css';
+import DownArrow from './DownArrow';
 
 const ReserveElement = ({
     checkOrderCanBeCompleted,
@@ -39,6 +40,7 @@ const ReserveElement = ({
 
   return (
     <section className="Reserve">
+      <DownArrow />
       <h3>Making a reservation</h3>
       <p>In order to reserve your order we will need some details from you</p>
       <p>* items required.</p>

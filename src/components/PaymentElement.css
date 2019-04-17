@@ -12,14 +12,14 @@
   border: 1.5px solid;
   border-radius: 2px;
   padding: 10px; 
-  width: 100%;
+  width: 80%;
   resize: none;
   overflow: auto;
   font-size: 0.9rem;
 }
 
 .payment-text {
-  width: 100%;
+  width: 80%;
   border: 1.5px solid;
   border-radius: 2px;
   padding: 10px;
