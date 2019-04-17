@@ -19,16 +19,18 @@ const Cart = ({
   return(
     <section className={cartVisibleClass}>
       <h2>Cart</h2>
-      <h1 className="Popup-Minimizer" onClick={()=>{makeCartVisible()}}>X</h1>
+      <h1 className="Popup-Minimizer" onClick={()=>{makeCartVisible()}}>x</h1>
 
       {cartVisible && cart.length === 0 && 
         <EmptyCart />
       }
-      <div className="Cart-Grid-Titles">
-        <h3>Product</h3>
-        <h3>Price</h3>
-        <h3>Quantity</h3>
-      </div>
+      {cart.length > 0 &&
+        <div className="Cart-Grid-Titles">
+          <h3>Product</h3>
+          <h3>Price</h3>
+          <h3>Quantity</h3>
+        </div>
+      }
       {cart.map((product, i)=>{
         var cumulativePrice = (product.price * product.quantity).toFixed(2);
         return (
@@ -45,9 +47,10 @@ const Cart = ({
       })}
       {cart.length > 0 &&
         <section className="Cart-Dashboard">
+          <div className="Cart-Line"></div>
           <div className="Cart-Dash-Grid">
-            <h3>Total </h3>
-            <h3>{totalCost.toFixed(2)}</h3>
+            <h3 className="total-heading">Total </h3>
+            <h3 className="total-amount">{totalCost.toFixed(2)}</h3>
           </div>
           <button 
             onClick={()=>{ 

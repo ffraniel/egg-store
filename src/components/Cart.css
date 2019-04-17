@@ -9,8 +9,10 @@
   border-radius: 3px;
   height: 400px;
   width: 320px;
-  overflow: scroll;
+  overflow: visible;
   font-size: 0.75rem;
+  box-shadow: 1px -0px 4px 2px #5c5858;
+  box-sizing: border-box;
 }
 
 .Cart-Visible {
@@ -42,6 +44,23 @@
 .Cart-Grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.Cart-Dash-Grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.Cart-Dash-Grid .total-heading {
+  grid-column: span 2;
+}
+
+.Cart-Dashboard {
+  display: grid;
+}
+
+.Cart-Line {
+  display: none;
 }
 
 .Cart-Incrementer * {
@@ -81,11 +100,44 @@
   font-size: 1.1rem;
   font-weight: 600;
   width: 200px;
-  margin-top: 40px;
-  float: right;
+  margin: auto;
+  margin-top: 20px;
+;
 }
 
 .Checkout-Button:hover {
   background-color: blue;
   border-color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .Popup-Cart {
+    height: 80vh;
+    width: 100%;
+    bottom: -81vh;
+    overflow: hidden;
+    padding: 0 0 0 40px;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+  .Cart-Visible {
+    bottom: 0;
+  }
+  .Cart-Grid-Titles {
+    padding: 0 20%;
+  }
+  
+  .Cart-Grid {
+    padding: 0 20%;
+  }
+  .Cart-Dash-Grid {
+    padding: 0 20%;
+  }
+  .Cart-Line {
+    border-top: rgb(34, 33, 33) 2px solid;
+    width: 50%;
+    margin: 5px auto;
+    display: block;
+  }
+
 }
